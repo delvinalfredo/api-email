@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm/logger"
 	"mail.blast/Config"
 
-	// "mail.blast/Models"
+	"mail.blast/Models"
 	"mail.blast/Routes"
 )
 
@@ -31,11 +31,11 @@ func main() {
 	}
 	close, _ := db.DB()
 	defer close.Close()
-	// db.AutoMigrate(&Models.EmailAccount{})
-	// db.AutoMigrate(&Models.EmailTemplate{})
-	// db.AutoMigrate(&Models.Publisher{})
-	// db.AutoMigrate(&Models.PublisherParticipant{})
-	// db.AutoMigrate(&Models.User{})
+	db.AutoMigrate(&Models.EmailAccount{})
+	db.AutoMigrate(&Models.EmailTemplate{})
+	db.AutoMigrate(&Models.Publisher{})
+	db.AutoMigrate(&Models.PublisherParticipant{})
+	db.AutoMigrate(&Models.User{})
 
 	r := Routes.SetupRouter()
 	//running
